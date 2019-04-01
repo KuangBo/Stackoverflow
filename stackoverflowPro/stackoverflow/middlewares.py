@@ -13,7 +13,6 @@ from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 
 # from stackoverflowPro.stackoverflow.settings import IPPOOL
 
-
 UA = UserAgent()
 
 

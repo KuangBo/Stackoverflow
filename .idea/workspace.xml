@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c743b5f-da8e-4af0-a384-55f8180c8016" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/githubPro/githubPro/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/githubPro/githubPro/items.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/githubPro/githubPro/middlewares.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/githubPro/githubPro/pipelines.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/githubPro/githubPro/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/githubPro/githubPro/spiders/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/githubPro/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/githubPro/scrapy.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackoverflowPro/monitor.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/githubPro/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/githubPro/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,9 +48,22 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/githubPro/scrapy.cfg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="6" column="19" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/githubPro/main.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -128,6 +133,7 @@
         <option value="$PROJECT_DIR$/stackoverflowPro/stackoverflow/settings.py" />
         <option value="$PROJECT_DIR$/Eoj/main.py" />
         <option value="$PROJECT_DIR$/stackoverflowPro/stackoverflow/middlewares.py" />
+        <option value="$PROJECT_DIR$/githubPro/main.py" />
       </list>
     </option>
   </component>
@@ -175,6 +181,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Program Files\JetBrains\WorkSpaces\Stackoverflow\githubPro" />
       <recent name="D:\Program Files\JetBrains\WorkSpaces\Stackoverflow\stackoverflowPro\stackoverflow" />
       <recent name="D:\Program Files\JetBrains\WorkSpaces\Stackoverflow\stackoverflow\stackoverflow\spiders" />
     </key>
@@ -290,7 +297,7 @@
       <workItem from="1553310477981" duration="137000" />
       <workItem from="1554080359870" duration="2520000" />
       <workItem from="1554215685519" duration="24000" />
-      <workItem from="1554256018930" duration="1682000" />
+      <workItem from="1554256018930" duration="1732000" />
     </task>
     <task id="LOCAL-00001" summary="PyCharm">
       <created>1554082233033</created>
@@ -327,14 +334,22 @@
       <option name="project" value="LOCAL" />
       <updated>1554083297538</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Stack Overflow">
+      <created>1554257728505</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1554257728505</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54420000" />
+    <option name="totallyTimeSpent" value="54470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16868381" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -448,13 +463,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stackoverflowPro/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/Stackoverflow_spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -475,8 +483,12 @@
     <entry file="file://$PROJECT_DIR$/githubPro/githubPro/middlewares.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/githubPro/scrapy.cfg">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/stackoverflowPro/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stackoverflowPro/scrapy.cfg">
       <provider selected="true" editor-type-id="text-editor">
@@ -485,8 +497,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/githubPro/scrapy.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/githubPro/main.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

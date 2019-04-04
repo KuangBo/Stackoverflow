@@ -4,8 +4,30 @@
 #
 # See documentation in:
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
 from scrapy import signals
+
+import random
+from fake_useragent import UserAgent
+from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
+
+from stackoverflowPro.stackoverflow.settings import IPPOOL
+
+UA = UserAgent()
+
+
+# 使用第三方user-agent库（fake-useragent）实现设置agent
+class RandomUserAgentMiddleware(UserAgentMiddleware):
+
+    def __init__(self, user_agent='Scrapy'):
+        super().__init__()
+        self.user_agent = user_agent
+
+    def process_request(self, request, spider):
+        # 设置代理IP
+        this_ip = random.choice(IPPOOL)
+        request.meta['proxy'] = 'HTTP://' + this_ip
+        request.headers.setdefault('Referrer', 'https://github.com')
+        request.headers.setdefault('User-Agent', UA.random)
 
 
 class GithubproSpiderMiddleware(object):

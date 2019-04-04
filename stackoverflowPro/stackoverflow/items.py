@@ -9,7 +9,8 @@ import scrapy
 
 
 class StackoverflowItem(scrapy.Item):
-
+    # define the fields for your item here like:
+    # name = scrapy.Field()
     links = scrapy.Field()
     views = scrapy.Field()
     votes = scrapy.Field()

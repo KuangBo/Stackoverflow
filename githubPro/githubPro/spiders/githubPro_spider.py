@@ -19,7 +19,7 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 
-class stackoverflow(scrapy.Spider):
+class githubPro(scrapy.Spider):
 
     name = "githubPro"
 
@@ -27,13 +27,16 @@ class stackoverflow(scrapy.Spider):
         self.count = 1
 
     def start_requests(self):
-        _url = 'https://stackoverflow.com/questions?page={page}&sort=votes&pagesize=50'
-        urls = [_url.format(page=page) for page in range(1, 100001)]
+        _url = 'https://github.com/search?p={page}&q=java&type=Repositories'
+        # _url = 'https://stackoverflow.com/questions?page={page}&sort=votes&pagesize=50'
+        # 100页数据，每页10条
+        urls = [_url.format(page=page) for page in range(1, 101)]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse, dont_filter=False)   # dont_filter=False去重
 
     def parse(self, response):
-        for index in range(1, 51):
+        # 每页只有10条数据
+        for index in range(1, 11):
             self.count += 1
             if self.count % 100 == 0:
                 logger.info(self.count)

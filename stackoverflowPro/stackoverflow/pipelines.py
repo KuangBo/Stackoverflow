@@ -15,11 +15,13 @@ class StackoverflowPipeline(object):
     def process_item(self, item, spider):
         return item
 
+
 class MysqlPipeline(object):
     # 采用同步的机制写入mysql
     def __init__(self):
         # 连接MySQL数据库
-        #self.conn = pymysql.connect('127.0.0.1', 'root', 'root', 'developer_community', charset="utf8", use_unicode=True)
+        # self.conn = pymysql.connect
+        # ('127.0.0.1', 'root', 'root', 'developer_community', charset="utf8", use_unicode=True)
         self.conn = pymysql.connect(
             host="localhost",
             port=3306,

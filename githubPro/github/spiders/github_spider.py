@@ -18,6 +18,12 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 
+'''
+在解析response的时候，可以使用xpath和css，建议使用css，方便处理
+不需要考虑html，可以直接进行统一定位处理
+'''
+
+
 class github(scrapy.Spider):
 
     name = "github"

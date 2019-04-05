@@ -4,8 +4,7 @@
 import logging
 
 import scrapy
-from githubPro.githubPro.items import GithubproItem
-
+from github.githubPro.items import GithubproItem
 
 formatter = logging.Formatter(
     '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -56,13 +55,17 @@ class githubPro(scrapy.Spider):
                 ('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/div[2]/p/relative-time/text()').extract()
 
             # 进入该话题网页url
-            url = 'https://stackoverflow.com' \
-                   + sel.xpath('/html/body/div[4]/div[2]/div[1]/div[3]/div[1]/div[2]/h3/a/@href').extract()[0]
+            url = 'https://github.com'\
+                  + sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/h3/a/@href').extract()[0]
             # 请求下一层网页
             yield scrapy.Request(url, meta={'item': item}, callback=self.parse_s, dont_filter=False)  # 请求第二个parse
 
-    def parse_s(self, response):
+    @staticmethod
+    def parse_s(response):
         item = response.meta['item']
+        s_sel = response.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]')
+        item['author'] = s_sel.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[6]/div[2]/a[1]').extract()
+        '''
         question_state_sel = response.xpath('/html/body/div[4]/div[2]/div/div[1]/div[3]/div[1]/div/div[2]/div[1]')
         if "".join(question_state_sel.extract()):
             item['question_state'] = question_state_sel.xpath('string(.)').extract()
@@ -76,5 +79,5 @@ class githubPro(scrapy.Spider):
         adopted_sel = response.xpath('/html/body/div[4]/div[2]/div/div[1]/div[3]/div[3]/div[2]/div/div[2]/div[1]')
         if "".join(adopted_code_sel_flag.extract()):
             item['adopted'] = adopted_sel.xpath('string(.)').extract()
-
+        '''
         yield item

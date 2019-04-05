@@ -34,11 +34,11 @@ class MysqlPipeline(object):
     def process_item(self, item, spider):
         # 写入数据
         insert_sql = "insert ignore into github_info(" \
-              "title, star, des, tag, update_date) " \
-              "values(%s, %s, %s, %s, %s)"
+              "author, title, star, des, tag, update_date) " \
+              "values(%s, %s, %s, %s, %s, %s)"
         self.cursor.execute(insert_sql,
-                            (item["title"], item["star"],
-                             item["des"], item["tag"],
+                            (item['author'], item['title'], item['star'],
+                             item['des'], item['tag'],
                              "Updated ".join(item['update_date'])))
         self.conn.commit()
         return item

@@ -8,9 +8,11 @@
 import scrapy
 
 
-class GithubproItem(scrapy.Item):
+class GithubItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    # 作者
+    author = scrapy.Field()
     # 标题
     title = scrapy.Field()
     # star数量

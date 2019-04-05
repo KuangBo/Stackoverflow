@@ -29,7 +29,7 @@ class githubPro(scrapy.Spider):
         _url = 'https://github.com/search?p={page}&q=java&type=Repositories'
         # _url = 'https://stackoverflow.com/questions?page={page}&sort=votes&pagesize=50'
         # 100页数据，每页10条
-        urls = [_url.format(page=page) for page in range(1, 101)]
+        urls = [_url.format(page=page) for page in range(1, 2)]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse, dont_filter=False)   # dont_filter=False去重
 
@@ -50,32 +50,46 @@ class githubPro(scrapy.Spider):
                 '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[2]/div[2]/a/text()'.format(index=index)).extract()[1])
             item['tag'] = sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[2]/div[1]/text()'.format(index=index)).extract()
             item['des'] = "".join(
-                sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/p/text()'.format(index=index)).xpath('string(.)').extract())
+                sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/p/text()'.format(index=index)).extract())
             item['update_date'] = sel.xpath(
                 '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/div[2]/p/relative-time/text()'.format(index=index)).extract()
-            '''
-            print(item['title'])
-            print(item['star'])
-            print(item['tag'])
-            print(item['des'])
-            print(item['update_date'])
-            print('++++++++++++++++')
-            '''
             # 进入该话题网页url
             url = 'https://github.com'\
                   + sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/h3/a/@href'.format(index=index)).extract()[0]
             # 请求下一层网页
             yield scrapy.Request(url, meta={'item': item}, callback=self.parse_s, dont_filter=False)  # 请求第二个parse
 
-    @staticmethod
-    def parse_s(response):
+    def parse_s(self, response):
         item = response.meta['item']
         s_sel = response.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]')
-        print(''.join(item['tag']) + '---------------')
+        # print(''.join(item['tag']) + '---------------')
+        '''
         if ''.join(item['tag']):
             item['author'] = s_sel.xpath(
                 '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[6]/div[2]/a[1]/text()').extract()
         else:
             item['author'] = s_sel.xpath(
                 '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[5]/div[2]/a[1]/text()').extract()
+        '''
+        item['author'] = s_sel.css('.commit-author::text').extract()
+        '''
+        if s_sel.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[4]/details[2]/div/div/div[1]/div[3]/a[2]/@href').extract_first():
+            item['file_urls'] = 'https://github.com' + s_sel.xpath(
+                '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[4]/details[2]/div/div/div[1]/div[3]/a[2]/@href').extract()[0]
+        else:
+            item['file_urls'] = 'https://github.com' + s_sel.xpath(
+                '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[5]/details[2]/div/div/div[1]/div[3]/a[2]/@href').extract()[0]
+        '''
+        # item['file_urls'] = 'https://github.com' + s_sel.css('a.btn-outline:nth-child(2)::attr(href)').extract_first()
+        item['file_urls'] = 'https://github.com/' + "".join(item['title']) + '/archive/master.zip'
+
         yield item
+
+    '''
+    def parse_link(self, response):
+        item = response.meta['item']
+        href = response.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[4]/details[2]/div/div/div[1]/div[3]/a[2]/@href').extract_first()
+        url = response.urljoin(href)
+        item['file_urls'] = [url]
+        return item
+    '''

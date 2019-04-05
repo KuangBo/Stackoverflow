@@ -10,6 +10,9 @@ from twisted.enterprise import adbapi
 import pymysql
 import pymysql.cursors
 
+from scrapy.pipelines.files import FilesPipeline
+from urllib.parse import urlparse
+from os.path import basename, dirname, join
 
 class GithubPipeline(object):
     def process_item(self, item, spider):
@@ -34,12 +37,13 @@ class MysqlPipeline(object):
     def process_item(self, item, spider):
         # 写入数据
         insert_sql = "insert ignore into github_info(" \
-              "author, title, star, des, tag, update_date) " \
-              "values(%s, %s, %s, %s, %s, %s)"
+              "author, title, star, des, tag, update_date, file_urls) " \
+              "values(%s, %s, %s, %s, %s, %s, %s)"
         self.cursor.execute(insert_sql,
                             ("".join(item['author']), "".join(item['title']), item['star'],
-                             " ".join(item['des']), " ".join(item['tag']),
-                             "Updated ".join(item['update_date'])))
+                             "".join(item['des']), " ".join(item['tag']),
+                             "Updated ".join(item['update_date']),
+                             item['file_urls']))
         self.conn.commit()
         return item
 
@@ -81,3 +85,10 @@ class MysqlTwistedPipeline(object):
         # 根据不同的item 构建不同的sql语句并插入到mysql中
         insert_sql, params = item.get_insert_sql()
         cursor.execute(insert_sql, params)
+
+
+class MyFilePipeline(FilesPipeline):
+
+    def file_path(self, request, response=None, info=None):
+        path = urlparse(request.url).path
+        return join(basename(dirname(path)), basename(path))

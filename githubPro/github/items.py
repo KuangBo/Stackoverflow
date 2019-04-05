@@ -23,4 +23,8 @@ class GithubItem(scrapy.Item):
     tag = scrapy.Field()
     # 更新日期
     update_date = scrapy.Field()
+    # 文件链接地址
+    file_urls = scrapy.Field()
+    # 文件
+    files = scrapy.Field()
     pass

@@ -23,6 +23,7 @@ DOWNLOAD_DELAY = 2  # 每两次请求之间存在延迟时间为2秒
 
 # 控制并发
 CONCURRENT_REQUESTS_PER_DOMAIN = 1  # 使爬虫同时只能对每个域名发起一个请求
+
 '''
 # 多线程
 CONCURRENT_REQUESTS = 100

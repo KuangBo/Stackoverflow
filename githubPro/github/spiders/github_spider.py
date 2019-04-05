@@ -42,15 +42,17 @@ class githubPro(scrapy.Spider):
 
             sel = response.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]'.format(index=index))
             item = GithubItem()
-            item['title'] = "".join(
-                sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/h3/a/text()').extract())
+            title_sel = response.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/h3/a'.format(index=index))
+            #item['title'] = "".join(
+            #    sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/h3/a/text()'.format(index=index)).extract())
+            item['title'] = title_sel.xpath('string(.)').extract()
             item['star'] = "".join(sel.xpath(
-                '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[2]/div[2]/a/text()').extract()[1])
-            item['tag'] = sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[2]/div[1]/text()').extract()
+                '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[2]/div[2]/a/text()'.format(index=index)).extract()[1])
+            item['tag'] = sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[2]/div[1]/text()'.format(index=index)).extract()
             item['des'] = "".join(
-                sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/p/text()').extract())
+                sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/p/text()'.format(index=index)).xpath('string(.)').extract())
             item['update_date'] = sel.xpath(
-                '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/div[2]/p/relative-time/text()').extract()
+                '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/div[2]/p/relative-time/text()'.format(index=index)).extract()
             '''
             print(item['title'])
             print(item['star'])
@@ -61,7 +63,7 @@ class githubPro(scrapy.Spider):
             '''
             # 进入该话题网页url
             url = 'https://github.com'\
-                  + sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/h3/a/@href').extract()[0]
+                  + sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/h3/a/@href'.format(index=index)).extract()[0]
             # 请求下一层网页
             yield scrapy.Request(url, meta={'item': item}, callback=self.parse_s, dont_filter=False)  # 请求第二个parse
 
@@ -69,25 +71,11 @@ class githubPro(scrapy.Spider):
     def parse_s(response):
         item = response.meta['item']
         s_sel = response.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]')
-        if item['tag']:
+        print(''.join(item['tag']) + '---------------')
+        if ''.join(item['tag']):
             item['author'] = s_sel.xpath(
                 '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[6]/div[2]/a[1]/text()').extract()
         else:
             item['author'] = s_sel.xpath(
                 '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[5]/div[2]/a[1]/text()').extract()
-        '''
-        question_state_sel = response.xpath('/html/body/div[4]/div[2]/div/div[1]/div[3]/div[1]/div/div[2]/div[1]')
-        if "".join(question_state_sel.extract()):
-            item['question_state'] = question_state_sel.xpath('string(.)').extract()
-        adopted_code_sel_flag = response.xpath(
-            '/html/body/div[4]/div[2]/div/div[1]/div[3]/div[3]/div[2]/div/div[1]/div/div[2]/svg')
-        adopted_code_sel = response.xpath(
-            '/html/body/div[4]/div[2]/div/div[1]/div[3]/div[3]/div[2]/div/div[2]/div[1]//code')
-        if "".join(adopted_code_sel_flag.extract()):
-            if "".join(adopted_code_sel.extract()):
-                item['adopted_code'] = adopted_code_sel.xpath('string(.)').extract()
-        adopted_sel = response.xpath('/html/body/div[4]/div[2]/div/div[1]/div[3]/div[3]/div[2]/div/div[2]/div[1]')
-        if "".join(adopted_code_sel_flag.extract()):
-            item['adopted'] = adopted_sel.xpath('string(.)').extract()
-        '''
         yield item

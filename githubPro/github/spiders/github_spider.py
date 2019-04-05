@@ -4,7 +4,7 @@
 import logging
 
 import scrapy
-from github.githubPro.items import GithubproItem
+from githubPro.github.items import GithubItem
 
 formatter = logging.Formatter(
     '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -42,7 +42,7 @@ class githubPro(scrapy.Spider):
 
             sel = response.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[index]'.format(index=index))
 
-            item = GithubproItem()
+            item = GithubItem()
             item['title'] = "".join(
                 sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/h3/a/text()').extract())
             item['star'] = sel.xpath(

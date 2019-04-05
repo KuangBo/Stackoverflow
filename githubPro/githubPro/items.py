@@ -11,13 +11,14 @@ import scrapy
 class GithubproItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    links = scrapy.Field()
-    views = scrapy.Field()
-    votes = scrapy.Field()
-    answers = scrapy.Field()
-    tags = scrapy.Field()
-    questions = scrapy.Field()
-    question_state = scrapy.Field()
-    adopted_code = scrapy.Field()
-    adopted = scrapy.Field()
+    # 标题
+    title = scrapy.Field()
+    # star数量
+    star = scrapy.Field()
+    # 项目描述
+    des = scrapy.Field()
+    # 标签
+    tag = scrapy.Field()
+    # 更新日期
+    update_date = scrapy.Field()
     pass

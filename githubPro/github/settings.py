@@ -15,14 +15,21 @@ SPIDER_MODULES = ['github.spiders']
 NEWSPIDER_MODULE = 'github.spiders'
 
 ITEM_PIPELINES = {
-    'github.pipelines.MysqlPipeline': 300,
     # 下载压缩文件
-    #'scrapy.pipelines.files.FilesPipeline': 1,
-    'github.pipelines.MyFilePipeline':1,
+    # 'scrapy.pipelines.files.FilesPipeline': 1,
+    'github.pipelines.MyFilePipeline': 1,
+    'github.pipelines.MysqlPipeline': 300,
 }
-# 压缩文件存放位置
-FILE_STORE = 'F:\github_file'
+# 自定义压缩文件存放位置
+FILES_STORE = 'F:\\github_file'
 
+# 解决重定向问题
+MEDIA_ALLOW_REDIRECTS = True
+
+'''
+# 1800后结束爬虫
+CLOSESPIDER_TIMEOUT = 1800
+'''
 # 提高scrapy爬取速度
 DOWNLOAD_DELAY = 2  # 每两次请求之间存在延迟时间为2秒
 

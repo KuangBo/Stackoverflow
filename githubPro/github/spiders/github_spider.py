@@ -18,9 +18,9 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 
-class githubPro(scrapy.Spider):
+class github(scrapy.Spider):
 
-    name = "githubPro"
+    name = "github"
 
     def __init__(self):
         self.count = 1
@@ -81,7 +81,8 @@ class githubPro(scrapy.Spider):
                 '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[5]/details[2]/div/div/div[1]/div[3]/a[2]/@href').extract()[0]
         '''
         # item['file_urls'] = 'https://github.com' + s_sel.css('a.btn-outline:nth-child(2)::attr(href)').extract_first()
-        item['file_urls'] = 'https://github.com/' + "".join(item['title']) + '/archive/master.zip'
+        url = 'https://github.com/' + "".join(item['title']) + '/archive/master.zip'
+        item['file_urls'] = [url]
 
         yield item
 

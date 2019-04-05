@@ -4,15 +4,20 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+import os
+import re
 
+from scrapy.exceptions import DropItem
 from twisted.enterprise import adbapi
 
+import scrapy
 import pymysql
 import pymysql.cursors
 
 from scrapy.pipelines.files import FilesPipeline
 from urllib.parse import urlparse
 from os.path import basename, dirname, join
+
 
 class GithubPipeline(object):
     def process_item(self, item, spider):
@@ -52,6 +57,7 @@ class MysqlPipeline(object):
         self.conn.close()
 
 
+# 暂未使用
 class MysqlTwistedPipeline(object):
     def __init__(self, dbpool):
         self.dbpool = dbpool
@@ -88,7 +94,25 @@ class MysqlTwistedPipeline(object):
 
 
 class MyFilePipeline(FilesPipeline):
+    # print('99999999999999')
+
+    def get_media_requests(self, item, info):
+        # print('0000000000000')
+        for file_url in item["file_urls"]:
+            yield scrapy.Request(file_url)
+
+    def item_completed(self, results, item, info):
+        # print('11111111111111')
+        file_paths = [x["path"] for ok, x in results if ok]
+        print(file_paths)
+        if not file_paths:
+            raise DropItem("Item contains no files")
+        return item
 
     def file_path(self, request, response=None, info=None):
+        # 对下载文件进行重命名
+        # print('22222222222222')
         path = urlparse(request.url).path
-        return join(basename(dirname(path)), basename(path))
+        # print('6666666666' + path.replace('/', ''))
+        return path.replace('/', '_')[1:]
+        # return join(basename(dirname(path)), basename(path))

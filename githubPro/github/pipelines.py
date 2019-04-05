@@ -37,8 +37,8 @@ class MysqlPipeline(object):
               "author, title, star, des, tag, update_date) " \
               "values(%s, %s, %s, %s, %s, %s)"
         self.cursor.execute(insert_sql,
-                            (item['author'], item['title'], item['star'],
-                             item['des'], item['tag'],
+                            ("".join(item['author']), "".join(item['title']), item['star'],
+                             "".join(item['des']), "".join(item['tag']),
                              "Updated ".join(item['update_date'])))
         self.conn.commit()
         return item

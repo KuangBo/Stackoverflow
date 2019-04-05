@@ -40,20 +40,25 @@ class githubPro(scrapy.Spider):
             if self.count % 100 == 0:
                 logger.info(self.count)
 
-            sel = response.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[index]'.format(index=index))
-
+            sel = response.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]'.format(index=index))
             item = GithubItem()
             item['title'] = "".join(
                 sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/h3/a/text()').extract())
-            item['star'] = sel.xpath(
-                '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[2]/div[2]/a/text()').extract()
-            item['tag'] = "".join(
-                sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[2]/div[1]/text()').extract())
+            item['star'] = "".join(sel.xpath(
+                '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[2]/div[2]/a/text()').extract()[1])
+            item['tag'] = sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[2]/div[1]/text()').extract()
             item['des'] = "".join(
                 sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/p/text()').extract())
-            item['update_date'] = sel.xpath\
-                ('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/div[2]/p/relative-time/text()').extract()
-
+            item['update_date'] = sel.xpath(
+                '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/div[2]/p/relative-time/text()').extract()
+            '''
+            print(item['title'])
+            print(item['star'])
+            print(item['tag'])
+            print(item['des'])
+            print(item['update_date'])
+            print('++++++++++++++++')
+            '''
             # 进入该话题网页url
             url = 'https://github.com'\
                   + sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[1]/div[1]/h3/a/@href').extract()[0]
@@ -64,7 +69,12 @@ class githubPro(scrapy.Spider):
     def parse_s(response):
         item = response.meta['item']
         s_sel = response.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]')
-        item['author'] = s_sel.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[6]/div[2]/a[1]').extract()
+        if item['tag']:
+            item['author'] = s_sel.xpath(
+                '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[6]/div[2]/a[1]/text()').extract()
+        else:
+            item['author'] = s_sel.xpath(
+                '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[5]/div[2]/a[1]/text()').extract()
         '''
         question_state_sel = response.xpath('/html/body/div[4]/div[2]/div/div[1]/div[3]/div[1]/div/div[2]/div[1]')
         if "".join(question_state_sel.extract()):

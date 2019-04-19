@@ -35,7 +35,7 @@ class github(scrapy.Spider):
         _url = 'https://github.com/search?p={page}&q=java&type=Repositories'
         # _url = 'https://stackoverflow.com/questions?page={page}&sort=votes&pagesize=50'
         # 100页数据，每页10条
-        urls = [_url.format(page=page) for page in range(1, 2)]
+        urls = [_url.format(page=page) for page in range(1, 100)]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse, dont_filter=False)   # dont_filter=False去重
 

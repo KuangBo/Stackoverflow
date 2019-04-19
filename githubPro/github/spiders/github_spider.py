@@ -77,6 +77,7 @@ class github(scrapy.Spider):
             item['author'] = s_sel.xpath(
                 '//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[5]/div[2]/a[1]/text()').extract()
         '''
+        # css选择器
         item['author'] = s_sel.css('.commit-author::text').extract()
         '''
         if s_sel.xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[4]/details[2]/div/div/div[1]/div[3]/a[2]/@href').extract_first():

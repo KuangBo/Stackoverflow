@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c743b5f-da8e-4af0-a384-55f8180c8016" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/githubPro/monitor.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/githubPro/github/spiders/github_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/githubPro/github/spiders/github_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/Stackoverflow_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/Stackoverflow_spider.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,15 +19,24 @@
     <SUITE FILE_PATH="coverage/Stackoverflow$pipelines.coverage" NAME="pipelines Coverage Results" MODIFIED="1554470176856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/githubPro/github" />
     <SUITE FILE_PATH="coverage/Stackoverflow$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1554432846935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stackoverflowPro" />
     <SUITE FILE_PATH="coverage/Stackoverflow$Stackoverflow_spider.coverage" NAME="Stackoverflow_spider Coverage Results" MODIFIED="1552747470155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders" />
-    <SUITE FILE_PATH="coverage/Stackoverflow$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1554439735744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stackoverflowPro" />
+    <SUITE FILE_PATH="coverage/Stackoverflow$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1555678127484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/githubPro" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/Stackoverflow_spider.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/githubPro/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="101" column="24" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
+            <state relative-caret-position="108">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/githubPro/github/spiders/github_spider.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="e#47#61#0" expanded="true" />
               </folding>
@@ -36,10 +45,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stackoverflowPro/main.py">
+        <entry file="file://$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/Stackoverflow_spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+            <state relative-caret-position="169">
+              <caret line="49" column="146" lean-forward="true" selection-start-line="49" selection-start-column="94" selection-end-line="49" selection-end-column="146" />
+              <folding>
+                <element signature="e#47#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,8 +104,8 @@
         <option value="$PROJECT_DIR$/githubPro/github/pipelines.py" />
         <option value="$PROJECT_DIR$/githubPro/main.py" />
         <option value="$PROJECT_DIR$/githubPro/github/settings.py" />
-        <option value="$PROJECT_DIR$/githubPro/github/spiders/github_spider.py" />
         <option value="$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/Stackoverflow_spider.py" />
+        <option value="$PROJECT_DIR$/githubPro/github/spiders/github_spider.py" />
       </list>
     </option>
   </component>
@@ -192,7 +204,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Stackoverflow" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/githubPro" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/githubPro/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Stackoverflow" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -217,6 +251,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -258,7 +293,7 @@
       <workItem from="1555034896623" duration="768000" />
       <workItem from="1555501929587" duration="1878000" />
       <workItem from="1555552788790" duration="15829000" />
-      <workItem from="1555661544688" duration="15304000" />
+      <workItem from="1555661544688" duration="16437000" />
     </task>
     <task id="LOCAL-00001" summary="PyCharm">
       <created>1554082233033</created>
@@ -386,22 +421,28 @@
       <option name="project" value="LOCAL" />
       <updated>1555661736357</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="修改了stackoverflow爬虫的部分，将里面xpath定位改为了css选择器定位，可以更好地兼容因为网页变动而出现不能爬取的现象">
+      <created>1555677385147</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1555677385147</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131572000" />
+    <option name="totallyTimeSpent" value="132705000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14447807" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.36824876" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.119476266" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39770868" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -444,7 +485,8 @@
     <MESSAGE value="增加注释，说明css与xpath" />
     <MESSAGE value="增加创建数据库的语句" />
     <MESSAGE value="修改github爬虫的数据页面数" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改github爬虫的数据页面数" />
+    <MESSAGE value="修改了stackoverflow爬虫的部分，将里面xpath定位改为了css选择器定位，可以更好地兼容因为网页变动而出现不能爬取的现象" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了stackoverflow爬虫的部分，将里面xpath定位改为了css选择器定位，可以更好地兼容因为网页变动而出现不能爬取的现象" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/__init__.py">
@@ -602,27 +644,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/githubPro/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="46" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/githubPro/github/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/githubPro/github/spiders/github_spider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
-          <folding>
-            <element signature="e#47#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -645,8 +670,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stackoverflowPro/stackoverflow/spiders/Stackoverflow_spider.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="101" column="24" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
+        <state relative-caret-position="169">
+          <caret line="49" column="146" lean-forward="true" selection-start-line="49" selection-start-column="94" selection-end-line="49" selection-end-column="146" />
+          <folding>
+            <element signature="e#47#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/githubPro/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/githubPro/github/spiders/github_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#47#61#0" expanded="true" />
           </folding>

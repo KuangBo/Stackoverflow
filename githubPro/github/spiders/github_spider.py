@@ -30,12 +30,13 @@ class github(scrapy.Spider):
 
     def __init__(self):
         self.count = 1
+        self.pagesum = 10000
 
     def start_requests(self):
         _url = 'https://github.com/search?p={page}&q=java&type=Repositories'
         # _url = 'https://stackoverflow.com/questions?page={page}&sort=votes&pagesize=50'
         # 100页数据，每页10条
-        urls = [_url.format(page=page) for page in range(1, 100)]
+        urls = [_url.format(page=page) for page in range(1, self.pagesum)]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse, dont_filter=False)   # dont_filter=False去重
 

@@ -41,15 +41,16 @@ class stackoverflow(scrapy.Spider):
             sel = response.xpath('//*[@id="questions"]/div[{index}]'.format(index=index))
             item = StackoverflowItem()
             item['votes'] = sel.css(
-                'div.statscontainer > div.stats > div.vote > div > span > strong::text').extract()[0]
+                'div.statscontainer > div.stats > div.vote > div > span > strong::text').extract()
             item['links'] = "".join(
                 sel.css('div.summary > h3 > a[href]').extract()).split("/")[2]
             item['answers'] = sel.css(
                 'div.statscontainer > div.stats > div.status.answered-accepted > strong::text').extract()
             item['views'] = "".join(
-                sel.css('div.statscontainer > div.views.supernova[title$="views"]').extract()).split(" ")[3].split("title=\"")[1].replace(",", "")
+                sel.xpath('/html/body/div[4]/div[2]/div[1]/div[3]/div[1]/div[1]/div[2]/@title').extract()).split()[0].replace(",", "")
+                # sel.css('div.statscontainer > div.views.supernova[title$="views"]').extract()).split(" ")[3].split("title=\"")[1].replace(",", "")
             item['questions'] = sel.css('div.summary > h3 > a::text').extract()
-            item['tags'] = sel.xpath('/html/body/div[5]/div[2]/div[1]/div[3]/div[5]/div[2]/div[2]/a/text()').extract()
+            item['tags'] = sel.xpath('/html/body/div[4]/div[2]/div[1]/div[3]/div[1]/div[2]/div[2]/a/text()').extract()
             '''
             item['votes'] = sel.xpath(
                 '/html/body/div[4]/div[2]/div[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div/span/strong/text()').extract()

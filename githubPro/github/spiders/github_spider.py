@@ -55,7 +55,7 @@ class github(scrapy.Spider):
             item['title'] = title_sel.xpath('string(.)').extract()
             item['star'] = "".join(sel.xpath(
                 '//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[2]/div[2]/a/text()'.format(index=index)).extract()[1])
-            item['tag'] = sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[2]/div[1]/text()'.format(index=index)).extract()
+            item['tag'] = sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/div[1]/text()'.format(index=index)).extract()
             item['des'] = "".join(
                 sel.xpath('//*[@id="js-pjax-container"]/div/div[3]/div/ul/li[{index}]/div[1]/p/text()'.format(index=index)).extract())
             item['update_date'] = sel.xpath(

@@ -11,7 +11,8 @@ import random
 from fake_useragent import UserAgent
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 
-from githubPro.github.settings import IPPOOL
+from .settings import IPPOOL
+# from githubPro.github.settings import IPPOOL
 
 UA = UserAgent()
 

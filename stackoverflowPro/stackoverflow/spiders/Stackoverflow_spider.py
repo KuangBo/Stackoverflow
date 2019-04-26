@@ -4,7 +4,8 @@
 import logging
 
 import scrapy
-from stackoverflowPro.stackoverflow.items import StackoverflowItem
+from ..items import StackoverflowItem
+# from stackoverflowPro.stackoverflow.items import StackoverflowItem
 
 
 formatter = logging.Formatter(

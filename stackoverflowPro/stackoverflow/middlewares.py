@@ -11,7 +11,8 @@ import random
 from fake_useragent import UserAgent
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 
-from stackoverflowPro.stackoverflow.settings import IPPOOL
+from .settings import IPPOOL
+# from stackoverflowPro.stackoverflow.settings import IPPOOL
 
 UA = UserAgent()
 

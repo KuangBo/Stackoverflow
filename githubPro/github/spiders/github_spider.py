@@ -4,7 +4,8 @@
 import logging
 
 import scrapy
-from githubPro.github.items import GithubItem
+from ..items import GithubItem
+# from githubPro.github.items import GithubItem
 
 formatter = logging.Formatter(
     '%(asctime)s - %(name)s - %(levelname)s - %(message)s')

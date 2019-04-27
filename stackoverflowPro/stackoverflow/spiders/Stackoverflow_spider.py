@@ -26,10 +26,11 @@ class stackoverflow(scrapy.Spider):
 
     def __init__(self):
         self.count = 1
+        self.sum = 351414  # 总页数
 
     def start_requests(self):
         _url = 'https://stackoverflow.com/questions?page={page}&sort=votes&pagesize=50'
-        urls = [_url.format(page=page) for page in range(1, 1000001)]
+        urls = [_url.format(page=page) for page in range(1, self.sum)]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse, dont_filter=False)   # dont_filter=False去重
 
@@ -41,6 +42,11 @@ class stackoverflow(scrapy.Spider):
 
             sel = response.xpath('//*[@id="questions"]/div[{index}]'.format(index=index))
             item = StackoverflowItem()
+
+            # 实时更新对象网站的总页数
+            sum_index = response.xpath('//*[@id="mainbar"]/div[2]/div[1]/text()').extract()[0].split()[0].replace(",", "")
+            self.sum = int(int(sum_index) / 50)
+
             item['votes'] = sel.css(
                 'div.statscontainer > div.stats > div.vote > div > span > strong::text').extract()
             item['links'] = "".join(
